@@ -22,7 +22,7 @@
         
         body { 
             background-color: var(--bg); 
-            /* Textura sutil de papel para dar elegância */
+            /* Textura de papel para elegância */
             background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
             color: var(--text); 
             font-family: 'Manrope', sans-serif; 
@@ -34,7 +34,7 @@
         /* --- HERO DE IMPACTO (FOTO CHEIA) --- */
         .header {
             position: relative;
-            height: 350px; /* Altura boa para mobile */
+            height: 350px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -47,16 +47,14 @@
             box-shadow: 0 10px 30px rgba(109, 76, 65, 0.2);
         }
 
-        /* A FOTO DELA NO FUNDO */
         .header-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('perfil.jpg'); 
             background-size: cover; 
-            background-position: center top; /* Foca no rosto */
+            background-position: center top;
             z-index: 1;
         }
 
-        /* DEGRADÊ PARA LEITURA */
         .header-overlay {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to top, rgba(62, 39, 35, 0.95) 10%, rgba(62, 39, 35, 0.3) 60%, transparent 100%);
@@ -80,7 +78,7 @@
         }
         .social-btn:hover { transform: scale(1.1); }
 
-        /* --- VITRINE (AJUSTE DE IMAGEM) --- */
+        /* --- VITRINE (CORREÇÃO DE IMAGEM) --- */
         .section-title {
             text-align: center; font-family: 'Playfair Display'; font-size: 1.4rem;
             color: var(--primary); margin: 40px 0 25px; position: relative;
@@ -100,23 +98,27 @@
         }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(109, 76, 65, 0.15); }
 
-        /* CORREÇÃO DA IMAGEM ESTICADA */
+        /* --- CORREÇÃO DA PROPORÇÃO --- */
         .p-img-container {
             width: 100%;
-            height: 160px; /* Altura fixa para alinhar */
+            /* Garante que o espaço da foto seja quadrado (1:1) */
+            aspect-ratio: 1 / 1; 
             overflow: hidden;
-            background-color: #F5F5F5; /* Fundo caso a imagem não preencha */
-            display: flex; align-items: center; justify-content: center;
+            background-color: #FFF;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            padding: 5px; /* Margem interna para a foto não colar na borda */
         }
         .p-img { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; /* Corta para preencher sem esticar */
-            object-position: center;
+            /* CONTAIN: Mostra a imagem inteira sem cortar nada */
+            object-fit: contain; 
         }
 
         .p-info { padding: 15px 10px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .p-name { font-size: 0.85rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3; margin-bottom: 10px; }
+        .p-name { font-size: 0.8rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3; margin-bottom: 10px; }
         .p-btn { 
             font-size: 0.65rem; color: var(--white); 
             background: var(--primary); padding: 8px 0; border-radius: 6px; 
@@ -160,7 +162,6 @@
 
     <div class="container">
         
-        <!-- HERO REFORMULADO (FOTO CHEIA) -->
         <header class="header fade-up">
             <div class="header-bg"></div>
             <div class="header-overlay"></div>
@@ -177,7 +178,6 @@
             </div>
         </header>
 
-        <!-- VITRINE PRODUTOS -->
         <div class="fade-up" style="animation-delay: 0.1s;">
             <h2 class="section-title">Materiais Exclusivos</h2>
             
@@ -216,7 +216,6 @@
             </div>
         </div>
 
-        <!-- SERVIÇOS -->
         <div class="fade-up" style="animation-delay: 0.2s;">
             <h2 class="section-title">Atendimento & Cursos</h2>
             
@@ -238,7 +237,6 @@
             </div>
         </div>
 
-        <!-- MAPA -->
         <div class="map-section fade-up" style="animation-delay: 0.3s;">
             <h2 class="section-title">Localização</h2>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3534.4474247232806!2d-48.67846790000001!3d-27.641625599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9527354a30cd0e55%3A0x6f31db7b67081d4b!2sAmanda%20Medeiros%20Beauty%20-%20Brow%20Lamination%2C%20Lash%20Lifting%20e%20Cursos!5e0!3m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
