@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Amanda Medeiros | Beauty & Academy</title>
     
-    <!-- Fontes Elegantes -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- IDENTIDADE VISUAL (TERRACOTA/MARROM) --- */
         :root {
-            --bg: #FDFBF9; /* Fundo Creme Claro */
-            --primary: #6D4C41; /* Marrom Café (Cor dos botões dela) */
+            --bg: #FDFBF9;
+            --primary: #6D4C41; 
             --primary-dark: #4E342E;
-            --accent: #D7CCC8; /* Bege detalhes */
+            --accent: #D7CCC8; 
             --text: #3E2723;
             --white: #FFFFFF;
         }
@@ -24,6 +22,8 @@
         
         body { 
             background-color: var(--bg); 
+            /* Textura sutil de papel para dar elegância */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
             color: var(--text); 
             font-family: 'Manrope', sans-serif; 
             overflow-x: hidden;
@@ -31,41 +31,60 @@
 
         .container { max-width: 500px; margin: 0 auto; padding: 0 0 60px; }
 
-        /* --- HERO (PERFIL) --- */
+        /* --- HERO DE IMPACTO (FOTO CHEIA) --- */
         .header {
+            position: relative;
+            height: 350px; /* Altura boa para mobile */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
             text-align: center;
-            padding: 40px 20px 20px;
-            background: linear-gradient(to bottom, #FFF 0%, var(--bg) 100%);
-            border-bottom: 1px solid rgba(109, 76, 65, 0.1);
+            padding-bottom: 30px;
+            overflow: hidden;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 30px rgba(109, 76, 65, 0.2);
         }
 
-        .profile-img {
-            width: 120px; height: 120px; border-radius: 50%;
-            object-fit: cover; border: 3px solid var(--primary);
-            padding: 3px; background: var(--white);
-            box-shadow: 0 5px 20px rgba(109, 76, 65, 0.15);
-            margin-bottom: 15px;
+        /* A FOTO DELA NO FUNDO */
+        .header-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('perfil.jpg'); 
+            background-size: cover; 
+            background-position: center top; /* Foca no rosto */
+            z-index: 1;
         }
 
-        .title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 5px; }
-        .subtitle { font-size: 0.85rem; color: #795548; letter-spacing: 1px; margin-bottom: 20px; }
+        /* DEGRADÊ PARA LEITURA */
+        .header-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(62, 39, 35, 0.95) 10%, rgba(62, 39, 35, 0.3) 60%, transparent 100%);
+            z-index: 2;
+        }
 
-        .social-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 10px; }
+        .header-content { position: relative; z-index: 3; width: 100%; padding: 0 20px; }
+
+        .title { 
+            font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); 
+            margin-bottom: 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .subtitle { font-size: 0.9rem; color: #D7CCC8; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; font-weight: 600; }
+
+        .social-row { display: flex; justify-content: center; gap: 15px; }
         .social-btn { 
-            color: var(--primary); font-size: 1.2rem; 
-            width: 40px; height: 40px; border-radius: 50%; 
-            background: #FFF; border: 1px solid var(--accent);
-            display: flex; align-items: center; justify-content: center;
-            transition: 0.2s; text-decoration: none;
+            color: var(--primary); font-size: 1.1rem; 
+            width: 38px; height: 38px; border-radius: 50%; 
+            background: #FFF; display: flex; align-items: center; justify-content: center;
+            transition: 0.2s; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .social-btn:hover { background: var(--primary); color: #FFF; transform: translateY(-3px); }
+        .social-btn:hover { transform: scale(1.1); }
 
-        /* --- SEÇÃO LOJA (PRODUTOS DIGITAIS) --- */
+        /* --- VITRINE (AJUSTE DE IMAGEM) --- */
         .section-title {
-            text-align: center; font-family: 'Playfair Display'; font-size: 1.2rem;
-            color: var(--primary); margin: 30px 0 20px; position: relative;
+            text-align: center; font-family: 'Playfair Display'; font-size: 1.4rem;
+            color: var(--primary); margin: 40px 0 25px; position: relative;
         }
-        .section-title::after { content: ''; display: block; width: 40px; height: 2px; background: var(--primary); margin: 5px auto 0; opacity: 0.3; }
 
         .products-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
@@ -74,44 +93,64 @@
 
         .product-card {
             background: var(--white); border-radius: 12px; overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 5px 15px rgba(109, 76, 65, 0.08); 
+            border: 1px solid rgba(109, 76, 65, 0.1);
             text-decoration: none; color: inherit; transition: 0.3s;
             display: flex; flex-direction: column;
         }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(109, 76, 65, 0.15); }
 
-        .p-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
-        .p-info { padding: 12px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        .p-name { font-size: 0.8rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3; }
-        .p-btn { 
-            margin-top: 8px; font-size: 0.7rem; color: var(--white); 
-            background: var(--primary); padding: 5px 10px; border-radius: 4px; 
-            text-transform: uppercase; font-weight: 600;
+        /* CORREÇÃO DA IMAGEM ESTICADA */
+        .p-img-container {
+            width: 100%;
+            height: 160px; /* Altura fixa para alinhar */
+            overflow: hidden;
+            background-color: #F5F5F5; /* Fundo caso a imagem não preencha */
+            display: flex; align-items: center; justify-content: center;
+        }
+        .p-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Corta para preencher sem esticar */
+            object-position: center;
         }
 
-        /* --- SEÇÃO SERVIÇOS E CURSOS --- */
+        .p-info { padding: 15px 10px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .p-name { font-size: 0.85rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3; margin-bottom: 10px; }
+        .p-btn { 
+            font-size: 0.65rem; color: var(--white); 
+            background: var(--primary); padding: 8px 0; border-radius: 6px; 
+            text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;
+            width: 100%;
+        }
+
+        /* --- SERVIÇOS --- */
         .links-list { padding: 0 20px; display: flex; flex-direction: column; gap: 12px; }
 
         .link-card {
-            background: var(--primary); color: var(--white);
-            padding: 16px 20px; border-radius: 8px;
+            background: var(--white); color: var(--primary-dark);
+            padding: 18px 20px; border-radius: 10px; border: 1px solid rgba(109, 76, 65, 0.1);
             text-decoration: none; display: flex; justify-content: space-between; align-items: center;
-            transition: 0.2s; box-shadow: 0 4px 10px rgba(109, 76, 65, 0.2);
+            transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
-        .link-card:hover { background: var(--primary-dark); transform: scale(1.02); }
-        .link-text { font-weight: 600; font-size: 0.95rem; }
-        .link-icon { opacity: 0.8; }
+        .link-card:hover { border-color: var(--primary); transform: translateX(5px); }
+        .link-text { font-weight: 700; font-size: 0.95rem; }
+        
+        /* Destaque para Agendamento */
+        .link-card.highlight {
+            background: var(--primary); color: var(--white); border: none;
+            box-shadow: 0 5px 15px rgba(109, 76, 65, 0.3);
+        }
+        .link-card.highlight:hover { background: var(--primary-dark); }
 
-        /* --- LOCALIZAÇÃO --- */
-        .map-section { padding: 30px 20px 0; }
-        iframe { width: 100%; height: 250px; border-radius: 12px; border: 2px solid var(--white); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .address-text { text-align: center; font-size: 0.8rem; color: #795548; margin-top: 10px; }
+        /* --- MAPA --- */
+        .map-section { padding: 40px 20px 0; }
+        iframe { width: 100%; height: 250px; border-radius: 15px; border: 4px solid var(--white); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .address-text { text-align: center; font-size: 0.8rem; color: var(--primary); margin-top: 15px; font-weight: 600; }
 
-        /* --- FOOTER --- */
         .footer { text-align: center; margin-top: 50px; font-size: 0.7rem; color: #AAA; }
         .footer span { font-weight: bold; color: var(--primary); }
 
-        /* Animação */
         .fade-up { animation: fadeUp 0.8s ease backwards; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -121,55 +160,54 @@
 
     <div class="container">
         
-        <!-- HEADER -->
+        <!-- HERO REFORMULADO (FOTO CHEIA) -->
         <header class="header fade-up">
-            <img src="perfil.jpg" alt="Amanda Medeiros" class="profile-img">
-            <h1 class="title">Amanda Medeiros</h1>
-            <p class="subtitle">Beauty • Academy • Clinic</p>
+            <div class="header-bg"></div>
+            <div class="header-overlay"></div>
             
-            <div class="social-row">
-                <a href="https://www.instagram.com/amandamedeiiros__/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.instagram.com/amandamedeirosbeauty/" target="_blank" class="social-btn"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://www.instagram.com/amandamedeirosclinic/" target="_blank" class="social-btn"><i class="fas fa-spa"></i></a>
+            <div class="header-content">
+                <h1 class="title">Amanda Medeiros</h1>
+                <p class="subtitle">Beauty • Academy • Clinic</p>
+                
+                <div class="social-row">
+                    <a href="https://www.instagram.com/amandamedeiiros__/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/amandamedeirosbeauty/" target="_blank" class="social-btn"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://www.instagram.com/amandamedeirosclinic/" target="_blank" class="social-btn"><i class="fas fa-spa"></i></a>
+                </div>
             </div>
         </header>
 
-        <!-- ÁREA DE PRODUTOS DIGITAIS (VITRINE) -->
+        <!-- VITRINE PRODUTOS -->
         <div class="fade-up" style="animation-delay: 0.1s;">
             <h2 class="section-title">Materiais Exclusivos</h2>
             
             <div class="products-grid">
-                <!-- Produto 1: Pack -->
                 <a href="https://pay.kiwify.com.br/vLzzcpT" target="_blank" class="product-card">
-                    <img src="prod_templates.jpg" class="p-img">
+                    <div class="p-img-container"><img src="prod_templates.jpg" class="p-img"></div>
                     <div class="p-info">
                         <span class="p-name">Pack Templates Beauty</span>
                         <div class="p-btn">Comprar Agora</div>
                     </div>
                 </a>
 
-                <!-- Produto 2: Scripts -->
                 <a href="https://pay.kiwify.com.br/TjnHiNj" target="_blank" class="product-card">
-                    <img src="prod_scripts.jpg" class="p-img">
+                    <div class="p-img-container"><img src="prod_scripts.jpg" class="p-img"></div>
                     <div class="p-info">
                         <span class="p-name">Scripts de Venda</span>
                         <div class="p-btn">Comprar Agora</div>
                     </div>
                 </a>
 
-                <!-- Produto 3: Ebook Brow -->
-                <!-- Obs: Não tinha link no print, direcionei pro Whats. Se tiver link, troque. -->
                 <a href="https://wa.me/5548999222040?text=Oii,%20quero%20o%20Ebook%20Brow%20Lamination!" target="_blank" class="product-card">
-                    <img src="prod_brow.jpg" class="p-img">
+                    <div class="p-img-container"><img src="prod_brow.jpg" class="p-img"></div>
                     <div class="p-info">
                         <span class="p-name">Ebook Brow Expert</span>
                         <div class="p-btn">Saiba Mais</div>
                     </div>
                 </a>
 
-                <!-- Produto 4: Ebook Lash -->
                 <a href="https://pay.kiwify.com.br/rv39Hd5" target="_blank" class="product-card">
-                    <img src="prod_lash.jpg" class="p-img">
+                    <div class="p-img-container"><img src="prod_lash.jpg" class="p-img"></div>
                     <div class="p-info">
                         <span class="p-name">Ebook Lash Expert</span>
                         <div class="p-btn">Comprar Agora</div>
@@ -178,7 +216,7 @@
             </div>
         </div>
 
-        <!-- ÁREA DE SERVIÇOS E AGENDAMENTO -->
+        <!-- SERVIÇOS -->
         <div class="fade-up" style="animation-delay: 0.2s;">
             <h2 class="section-title">Atendimento & Cursos</h2>
             
@@ -193,7 +231,7 @@
                     <i class="fas fa-chevron-right link-icon"></i>
                 </a>
 
-                <a href="https://wa.me/5548999222040?text=Oii,%20gostaria%20de%20agendar%20um%20hor%C3%A1rio!" class="link-card" style="background-color: #3E2723;"> <!-- Cor um pouco mais escura pra destacar -->
+                <a href="https://wa.me/5548999222040?text=Oii,%20gostaria%20de%20agendar%20um%20hor%C3%A1rio!" class="link-card highlight">
                     <span class="link-text">Agende seu Horário</span>
                     <i class="far fa-calendar-check link-icon"></i>
                 </a>
